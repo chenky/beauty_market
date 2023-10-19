@@ -1,29 +1,34 @@
 <template>
 	<view class="container">
-		
-		<view class="intro">本项目已包含uni ui组件，无需import和注册，可直接使用。在代码区键入字母u，即可通过代码助手列出所有可用组件。光标置于组件名称处按F1，即可查看组件文档。</view>
-		<text class="intro">详见：</text>
-		<uni-link :href="href" :text="href"></uni-link>
+		<view class="header_promotion"></view>
+		<view class="activity"></view>
+		<view class="activity_intro"></view>
+		<view class="qa"></view>
+		<view class="store_explanation"></view>
+		<view class="music"></view>
+		<view class="generate_poster"></view>
+		<view class="tabbar">
+			<CustomerService></CustomerService>
+			<button type="primary">转发好友</button>
+			<button type="primary">立即报名</button>
+		</view>
 	</view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				href: 'https://uniapp.dcloud.io/component/README?id=uniui'
-			}
-		},
-		methods: {
-
-		}
-	}
+<script setup>
+	import { ref } from 'vue'
+	import CustomerService from '../../components/CustomerService.vue'
+	
+	const href = ref('https://www.baidu.com')
 </script>
 
-<style>
+<style lang="scss" scoped>
 	.container {
 		padding: 20px;
 		font-size: 14px;
 		line-height: 24px;
+		.intro{
+			color: red;
+		}
 	}
 </style>
