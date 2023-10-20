@@ -21,12 +21,15 @@
 	// 设置整个项目的背景色
 	page {
 		background-color: #f5f5f5;
+		padding-bottom: constant(safe-area-inset-bottom);
+		padding-bottom: env(safe-area-inset-bottom); 
+		uni-button{
+			padding: 5px;
+			margin: 0;
+			font-size: 14px;
+			line-height: initial;
+		}
 	}
+	
 
-	/* #endif */
-	.example-info {
-		font-size: 14px;
-		color: #333;
-		padding: 10px;
-	}
 </style>
