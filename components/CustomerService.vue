@@ -16,7 +16,7 @@
 				</view>
 				<view class="cs_store">
 					<uni-icons type="paperplane"></uni-icons>
-					<text>深圳市高新园帝国大厦23330号</text>
+					<text>深圳市高新园帝国大厦23330号haodya</text>
 				</view>
 			</view>
 		</uni-popup>
