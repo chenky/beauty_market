@@ -6,7 +6,6 @@
 *.swp
 
 # JavaScript 
-uni_modules/
 node_modules/
 .node_modules/
 .eslintcache
