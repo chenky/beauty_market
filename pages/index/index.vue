@@ -1,12 +1,23 @@
 <template>
 	<view class="container">
-		<view class="header_promotion"></view>
-		<view class="activity"></view>
-		<view class="activity_intro"></view>
-		<view class="qa"></view>
-		<view class="store_explanation"></view>
-		<view class="music"></view>
-		<view class="generate_poster"></view>
+		<view class="header_promotion">
+			<image class="img" mode="aspectFill" :src="promotionSrc"></image>
+		</view>
+		<view class="activity">
+			<image class="img" mode="aspectFill" :src="activitySrc"></image>
+		</view>
+		<view class="qa">
+			<image class="img" mode="aspectFill" :src="qaSrc"></image>
+		</view>
+		<view class="store_explanation">
+			<image class="img" mode="aspectFill" :src="professorSrc"></image>
+			<image class="img" mode="aspectFill" :src="envSrc1"></image>
+			<image class="img" mode="aspectFill" :src="envSrc2"></image>
+		</view>
+		<view class="music" @click="play">
+			<uni-icons type="sound" size="20"></uni-icons>
+		</view>
+		<!-- <view class="generate_poster"></view> -->
 		<view class="tabbar">
 			<CustomerService></CustomerService>
 			<button class="share" open-type="share">转发好友</button>
@@ -20,7 +31,22 @@
 	import CustomerService from '../../components/CustomerService.vue'
 	import Apply from '../../components/Apply.vue'
 	
-	const href = ref('https://www.baidu.com')
+	const promotionSrc = ref('https://img.tusij.com/ips_templ_preview/2020-09-23/07/078ab89c-ed42-423f-8e68-d44531905fc2.jpg?auth_key=2330412046-0-0-ec55cc87ce626a58c4563a5036a20cf0&x-oss-process=image/resize,m_fixed,w_750/crop,x_0,y_0,w_750')
+	const activitySrc = ref('https://imgs.design006.com/202205/Design006_AeEJHEPcra.jpg?x-oss-process=style/prev_w_750_h_auto')
+	const qaSrc = ref('https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fsafe-img.xhscdn.com%2Fbw1%2F331f3b00-d5b3-43aa-a1c9-aedf8c83d615%3FimageView2%2F2%2Fw%2F1080%2Fformat%2Fjpg&refer=http%3A%2F%2Fsafe-img.xhscdn.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1700556949&t=9c304affd6b829233a3d38fa5171053d')
+	const professorSrc = ref('https://imgpp.ztupic.com/u/3k0AX0FwjN/1627434663818_00706a22.jpg?x-oss-process=image/resize,w_750/quality,q_85/watermark,image_d2F0ZXIucG5n,type_ZmFuZ3poZW5naGVpdGk')
+	const envSrc1 = ref('https://img1.baidu.com/it/u=2170287429,1536144529&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=750')
+	const envSrc2 = ref('https://pic1.zhimg.com/v2-845d4b5824fbf2bcf86e4ab7c60a250e_1440w.jpg?source=172ae18b')
+	
+	const innerAudioContext = uni.createInnerAudioContext();
+	innerAudioContext.autoplay = true;
+	innerAudioContext.loop = true;
+	innerAudioContext.play()
+	innerAudioContext.src = 'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-hello-uniapp/2cc220e0-c27a-11ea-9dfb-6da8e309e0d8.mp3';
+	function play() {
+		innerAudioContext[innerAudioContext.paused?'play':'pause']()
+	}
+
 </script>
 
 <style lang="scss">
@@ -42,11 +68,27 @@
 </style>
 <style lang="scss" scoped>
 	.container {
-		padding: 20px;
+		// padding: 20px;
 		font-size: 14px;
 		line-height: 24px;
-		.intro{
-			color: red;
+		padding-bottom: 40px; 
+		uni-image{
+			width: 100%;
+			height: 700px;
+			display: block;
+		}
+		.music{
+			position: fixed;
+			right: 5px;
+			top: 20px;
+			z-index: 10;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #dddddd;
 		}
 		.tabbar{
 			background-color: #fff;
@@ -58,6 +100,8 @@
 			align-items: center;
 			justify-content: space-evenly;
 			padding: 10px 0;
+			padding-bottom: constant(safe-area-inset-bottom);
+			padding-bottom: env(safe-area-inset-bottom); 
 			z-index: 90;
 			.share{
 				// background-color: #F89E1C;

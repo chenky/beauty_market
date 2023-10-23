@@ -12,6 +12,11 @@
 		"backgroundColor": "#F8F8F8",
 		"app-plus": {
 			"titleNView": false
+			// "safearea": {  
+			//     "bottom": {  
+			//         "offset": "auto"  
+			//     }  
+			// }
 		}
 	}
 }
