@@ -1,8 +1,9 @@
 {
 	"pages": [{
 		"path": "pages/index/index",
+		// "title": "",
 		"style": {
-			// "navigationBarTitleText": "uni-app"
+			"navigationBarTitleText": "久悦汇美容馆"
 		}
 	}],
 	"globalStyle": {

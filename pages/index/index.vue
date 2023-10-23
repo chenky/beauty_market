@@ -20,8 +20,11 @@
 		<!-- <view class="generate_poster"></view> -->
 		<view class="tabbar">
 			<CustomerService></CustomerService>
-			<button class="share" open-type="share">转发好友</button>
+			<button class="share" @click="share">分享</button>
 			<Apply></Apply>
+		</view>
+		<view class="mask" v-show="isShareTip" @click="maskClick">
+			<ShareArrowTip class="share_arrow_tip"></ShareArrowTip>
 		</view>
 	</view>
 </template>
@@ -30,6 +33,7 @@
 	import { ref } from 'vue'
 	import CustomerService from '../../components/CustomerService.vue'
 	import Apply from '../../components/Apply.vue'
+	import ShareArrowTip from '../../components/ShareArrowTip.vue'
 	
 	const promotionSrc = ref('https://img.tusij.com/ips_templ_preview/2020-09-23/07/078ab89c-ed42-423f-8e68-d44531905fc2.jpg?auth_key=2330412046-0-0-ec55cc87ce626a58c4563a5036a20cf0&x-oss-process=image/resize,m_fixed,w_750/crop,x_0,y_0,w_750')
 	const activitySrc = ref('https://imgs.design006.com/202205/Design006_AeEJHEPcra.jpg?x-oss-process=style/prev_w_750_h_auto')
@@ -38,6 +42,8 @@
 	const envSrc1 = ref('https://img1.baidu.com/it/u=2170287429,1536144529&fm=253&fmt=auto&app=138&f=JPEG?w=750&h=750')
 	const envSrc2 = ref('https://pic1.zhimg.com/v2-845d4b5824fbf2bcf86e4ab7c60a250e_1440w.jpg?source=172ae18b')
 	
+	const isShareTip = ref(false)
+	
 	const innerAudioContext = uni.createInnerAudioContext();
 	innerAudioContext.autoplay = true;
 	innerAudioContext.loop = true;
@@ -45,6 +51,13 @@
 	innerAudioContext.src = 'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-hello-uniapp/2cc220e0-c27a-11ea-9dfb-6da8e309e0d8.mp3';
 	function play() {
 		innerAudioContext[innerAudioContext.paused?'play':'pause']()
+	}
+	
+	function share() {
+		isShareTip.value = true
+	}
+	function maskClick() {
+		isShareTip.value = false
 	}
 
 </script>
@@ -81,7 +94,7 @@
 			position: fixed;
 			right: 5px;
 			top: 20px;
-			z-index: 10;
+			z-index: 5;
 			width: 30px;
 			height: 30px;
 			border-radius: 50%;
@@ -107,6 +120,24 @@
 				// background-color: #F89E1C;
 				border-left: 1px solid #DDD;
 				border-right: 1px solid #DDD;
+			}
+		}
+		.mask{
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-color: #dddddde0;
+			padding-bottom: 40px;
+			z-index: 20;
+			.share_arrow_tip{
+				display: block;
+				position: absolute;
+				width: 100px;
+				top: 0;
+				right: 20px;
+				fill: #F89E1C;
 			}
 		}
 	}

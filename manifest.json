@@ -60,7 +60,9 @@
     "h5" : {
         "router" : {
             "mode" : "history",
-            "base" : "/h5/"
-        }
+            "base" : ""
+        },
+        "title" : "",
+        "template" : ""
     }
 }
